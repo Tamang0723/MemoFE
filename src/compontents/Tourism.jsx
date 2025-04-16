@@ -1,48 +1,86 @@
+import { memo } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
-    return (
-        
-    <div style={{width: 1440, height: 1310, position: 'relative', background: 'white'}}>
-    <div style={{width: 700, height: 670, left: 347, top: 161, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 700, height: 670, left: 327, top: 134, position: 'absolute', background: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.12)'}} />
-    <div style={{width: 240, height: 29, left: 429, top: 717, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-     <a href="#">科目-7</a>
-      </div>
-    <div style={{width: 70, height: 29, left: 433, top: 676, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-    <a href="#">科目-6</a>
-    </div>
-    <div style={{width: 168, height: 29, left: 429, top: 608, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-    <a href="#">科目-5</a>
-    </div>
-    <div style={{left: 429, top: 574, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-    <a href="#">科目-4</a>
-    </div>
-    <div style={{left: 433, top: 640, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-    <a href="#">科目-3</a>
-    </div>
-    <div style={{left: 438, top: 540, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-    <a href="#">科目-2</a>
-    </div>
-    <div style={{left: 438, top: 506, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
-    <a href="#">科目-1</a>
-    </div>
-    <div style={{width: 21, height: 22, left: 400, top: 547, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 584, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 584, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 617, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 655, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 688, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 688, position: 'absolute', background: '#5869CC'}} />
-    <div style={{width: 21, height: 22, left: 400, top: 721, position: 'absolute', background: '#5869CC'}} />
-    <div style={{left: 470, top: 344, position: 'absolute', color: '#5869CC', fontSize: 40, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}> 観光　-　科目</div>
-    <div style={{width: 49.04, height: 0, left: 386, top: 199, position: 'absolute', transform: 'rotate(2deg)', transformOrigin: 'top left', border: '1px black solid'}}></div>
-    <div style={{width: 49.04, height: 0, left: 386, top: 218, position: 'absolute', transform: 'rotate(-2deg)', transformOrigin: 'top left', border: '1px black solid'}}></div>
-    <div style={{width: 49.04, height: 0, left: 386.06, top: 234.94, position: 'absolute', transform: 'rotate(-5deg)', transformOrigin: 'top left', border: '1px black solid'}}></div>
-    <div style={{width: 56, height: 74, left: 967, top: 188, position: 'absolute', background: '#D9D9D9', borderRadius: 9999}} />
-    <div style={{width: 21, height: 22, left: 400, top: 510, position: 'absolute', background: '#5869CC'}} />
+  
+      const navigate =useNavigate();
+
+
+      const subjects = [
+      {index:1,subject:"subjectt-1"},
+      {index:2,subject:"subjectt-2"},
+      {index:3,subject:"subjectt-3"},
+      {index:4,subject:"subjectt-4"},
+      {index:5,subject:"subjectt-5"},
+      {index:6,subject:"subjectt-6"},
+    
+      ];
+    
+    
+    
+       const navigateMemo =(subject) =>{
+        navigate(`/memolisttourism?subject=${encodeURIComponent(subject)}`);
+       }
+    
+      return (
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh", 
+            background: "white",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            paddingTop: "100px",
+          }}
+        >
+          <h2 style={{ color: "#5869CC", fontSize: "32px", marginBottom: "40px" }}>
+          観光　-　科目
+          </h2>
+    
+          <div
+            style={{
+              width: "700px",
+              background: "white",
+              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.12)",
+              padding: "40px 20px",
+              borderRadius: "12px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+            }}
+          >
+            {subjects.map((item,index) => (
+              <div
+                key={index}
+               
+                onClick={() => navigateMemo(item.subject) } 
+    
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  textDecoration: "none",
+                  color: "black",
+                  fontSize: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "21px",
+                    height: "22px",
+                    backgroundColor: "#5869CC",
+                  }}
+                />
+                {item.subject}
+              </div>
+            ))}
+          </div>
         </div>
       );
     }
+    
+    
     
     export default Home;
     

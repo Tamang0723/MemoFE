@@ -25,7 +25,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function Memo() {
+export default function MemoT() {
  const location = useLocation();
   const quesryparams = new URLSearchParams(location.search);
   const subject = quesryparams.get("subject");
@@ -149,18 +149,49 @@ const filteredMemo = memo.filter(
     }
   };
 
-  // Fetch memo from API
+ // Fetch memo from API
   useEffect(() => {
-    axios.get("http://localhost:8080/api/memos").then((response) => {
+    axios.get("http://localhost:8080/api/memos")
+    .then((response) => {
       setMemo(response.data);
       console.log(response.data);
+    
+
+     
     });
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // Call both APIs
+  //       const memoResponse = await axios.get("http://localhost:8080/api/memos");
+  //       const loginResponse = await axios.post("http://localhost:8080/api/v1/user/login");
+
+  //       // Handle login response
+  //       setMemo(loginResponse.data);
+  //       console.log(loginResponse.data);
+
+  //       const userCourse = loginResponse.data.course;
+  //       localStorage.setItem("userCourse", userCourse);
+  //       console.log("logged in user's course on list page", userCourse);
+        
+  //       // If you need the memos:
+  //       console.log("Memos:", memoResponse.data);
+
+  //     } catch (error) {sele
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
 
   return (
   
     <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-      <TableContainer component={Paper} style={{ width: "70%" }}>
+      <TableContainer component={Paper} style={{ width: "100%" }}>
         <Box display="flex" justifyContent="flex-start">
           <Button variant="contained" onClick={handleClickOpen}>
             {" "}
@@ -177,7 +208,7 @@ const filteredMemo = memo.filter(
               <TableCell align="right">subject</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody>      
             {memo.length > 0 && filteredMemo !==null ? (
               
               filteredMemo.map((memo) => (
@@ -256,19 +287,19 @@ const filteredMemo = memo.filter(
           value={newMemo.memos}
           onChange={handleChange}
           />
+          
           <Select name="subject"
           value={newMemo.subject}
           fullWidth
           onChange={(e)=>
             setNewMemo({...newMemo,subject:e.target.value})
           } >
-  <MenuItem value="Toeic">Toeic</MenuItem>
-  <MenuItem value="会計">会計</MenuItem>
-  <MenuItem value="ビジネスマナー">ビジネスマナー</MenuItem>
-  <MenuItem value="プログラミング">プログラミング</MenuItem>
-  <MenuItem value="日本語">日本語</MenuItem>
-  <MenuItem value="IT実習">IT実習</MenuItem>
-  <MenuItem value="ビジネスマネジメント">ビジネスマネジメント</MenuItem>
+  <MenuItem value="subjectt-1">Subject-1</MenuItem>
+  <MenuItem value="subjectt-2">Subject-2</MenuItem>
+  <MenuItem value="subjectt-3">Subject-3</MenuItem>
+  <MenuItem value="subjectt-4">Subject-4</MenuItem>
+  <MenuItem value="subjectt-5">Subject-5</MenuItem>
+  <MenuItem value="subjectt-6">Subject-6</MenuItem>
 </Select>
           <DialogActions>
           <Button onClick={handleClose} color="primary">Cancel</Button>
